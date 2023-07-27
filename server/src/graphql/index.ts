@@ -1,4 +1,4 @@
-import { getPrismaClient } from "./prisma";
+import { getPrismaClient } from "../prisma";
 import SchemaBuilder from "@pothos/core";
 import PrismaPlugin from "@pothos/plugin-prisma";
 import type PrismaTypes from "@pothos/plugin-prisma/generated";

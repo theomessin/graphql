@@ -1,4 +1,4 @@
-import { schema } from "./graphql";
+import { schema as gqlSchema } from "./graphql";
 import { printSchema } from "graphql";
 
-export default printSchema(schema);
+export const schema = printSchema(gqlSchema);

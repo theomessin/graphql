@@ -10,6 +10,6 @@ export function getPrismaClient(): PrismaClient {
     return prismaClient;
 }
 
-export function setPrismaClient(client: PrismaClient) {
+export function setPrismaClient(client: typeof prismaClient) {
     prismaClient = client;
 }

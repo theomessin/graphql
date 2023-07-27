@@ -1,9 +1,9 @@
 {
     "name": "client",
     "scripts": {
-        "build": "ts-node --transpile-only genql.script.ts",
-        "postinstall": "pnpm build",
-        "check": "tsc --noEmit",
+        "genql": "ts-node --transpile-only genql.script.ts",
+        "postinstall": "pnpm genql",
+        "check": "pnpm postinstall && tsc --noEmit",
         "dev": "ts-node-dev --transpile-only src/main.ts",
         "fmt": "prettier --write ."
     },

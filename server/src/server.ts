@@ -1,9 +1,8 @@
-import { schema } from "./graphql";
-import { createYoga } from "graphql-yoga";
+import { getYogaServer } from "./yoga";
 import { createServer } from "node:http";
 
 function main() {
-    const yoga = createYoga({ schema });
+    const yoga = getYogaServer();
     const server = createServer(yoga);
 
     server.listen(3000, () => {
