@@ -1,0 +1,14 @@
+{
+    "include": [
+        "src/**/*.ts",
+        "test/**/*.ts"
+    ],
+    "extends": "@tsconfig/node18/tsconfig.json",
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "noUncheckedIndexedAccess": true
+    },
+    "ts-node": {
+        "swc": true
+    }
+}

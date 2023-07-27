@@ -1,0 +1,18 @@
+{
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "name": "workspace:client",
+            "path": "client"
+        },
+        {
+            "name": "workspace:server",
+            "path": "server"
+        }
+    ],
+    "settings": {
+        "typescript.tsdk": "workspace:client/node_modules/typescript/lib"
+    }
+}
