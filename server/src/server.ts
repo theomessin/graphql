@@ -1,4 +1,4 @@
-import { schema } from "./pothos";
+import { schema } from "./graphql";
 import { createYoga } from "graphql-yoga";
 import { createServer } from "node:http";
 

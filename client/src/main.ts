@@ -8,18 +8,14 @@ async function main() {
         },
     });
 
-    const { user } = await client.query({
-        user: {
-            __args: { id: "1" },
-            email: true,
+    const { clients } = await client.query({
+        clients: {
+            clientKey: true,
+            clientName: true,
         },
     });
 
-    if (user === null) {
-        throw new Error("Could not find user for id 1");
-    }
-
-    console.log(user.email);
+    console.log(JSON.stringify(clients, null, 2));
 }
 
 main();

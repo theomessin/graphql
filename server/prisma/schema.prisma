@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// This makes using Pothos so much easier, learn more about it in the docs:
+// https://pothos-graphql.dev/docs/plugins/prisma#add-a-the-pothos-generator-to-your-prisma-schema
+generator pothos {
+  provider = "prisma-pothos-types"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Client {
+  clientKey  String  @id
+  clientName String
+  hotels     Hotel[]
+}
+
+model Hotel {
+  client    Client @relation(fields: [clientKey], references: [clientKey], onDelete: Cascade)
+  clientKey String
+
+  apiKey    String @id
+  hotelName String
+
+  @@index([clientKey])
+}
