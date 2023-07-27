@@ -1,4 +1,4 @@
-import { schema } from "./src/index";
+import { schema } from "./src/exports";
 import { type CodegenConfig } from "@graphql-codegen/cli";
 
 export default {

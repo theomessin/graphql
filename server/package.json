@@ -1,6 +1,6 @@
 {
     "name": "server",
-    "main": "src/index.ts",
+    "main": "src/exports.ts",
     "scripts": {
         "graphlql-codegen": "graphql-codegen --config codegen.config.ts",
         "postinstall": "pnpm prisma generate && pnpm graphlql-codegen",
