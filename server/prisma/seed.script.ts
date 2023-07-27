@@ -5,9 +5,20 @@ const prisma = new PrismaClient();
 async function main() {
     await prisma.client.createMany({
         data: [
-            { clientKey: "zxd47KQGAP", clientName: "ILIO" },
-            { clientKey: "01EB4HF7W5448WNH2AA", clientName: "STAYPINEAPPLE" },
-            { clientKey: "MjoZ83MaRR", clientName: "MCDREAMS" },
+            {
+                clientKey: "01EB4HF7W5448WNH2AA",
+                clientName: "STAYPINEAPPLE",
+            },
+        ],
+    });
+
+    await prisma.hotel.createMany({
+        data: [
+            {
+                clientKey: "01EB4HF7W5448WNH2AA",
+                apiKey: "32899e899dc042dda0fd938b2be21f91",
+                hotelName: "New York",
+            },
         ],
     });
 }

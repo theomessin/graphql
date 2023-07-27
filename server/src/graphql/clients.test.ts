@@ -6,7 +6,7 @@ import { buildHTTPExecutor } from "@graphql-tools/executor-http";
 const yoga = getYogaServer();
 const executor = buildHTTPExecutor({ fetch: yoga.fetch });
 
-it("returns three clients", async () => {
+it("returns one client", async () => {
     const document = graphql(`
         query clients {
             clients {
@@ -19,6 +19,29 @@ it("returns three clients", async () => {
     const result = await executor({ document });
 
     assertSingleValue(result);
-    // Assuming that we've ran the seed script...
-    expect(result.data?.clients).toHaveLength(3);
+    expect(result.data?.clients).toHaveLength(1);
+    expect(result.data?.clients[0]?.clientName).toBe("STAYPINEAPPLE");
+});
+
+it("includes hotel", async () => {
+    const document = graphql(`
+        query clientsWithHotels {
+            clients {
+                clientKey
+                clientName
+                hotels {
+                    apiKey
+                    hotelName
+                }
+            }
+        }
+    `);
+
+    const result = await executor({ document });
+
+    assertSingleValue(result);
+    expect(result.data?.clients).toHaveLength(1);
+    expect(result.data?.clients[0]?.clientName).toBe("STAYPINEAPPLE");
+    expect(result.data?.clients[0]?.hotels).toHaveLength(1);
+    expect(result.data?.clients[0]?.hotels[0]?.hotelName).toBe("New York");
 });

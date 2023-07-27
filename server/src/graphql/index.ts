@@ -21,6 +21,15 @@ builder.prismaObject("Client", {
     fields: (t) => ({
         clientKey: t.exposeID("clientKey"),
         clientName: t.exposeString("clientName"),
+        hotels: t.relation("hotels"),
+    }),
+});
+
+builder.prismaObject("Hotel", {
+    fields: (t) => ({
+        apiKey: t.exposeID("apiKey"),
+        clientKey: t.exposeString("clientKey"),
+        hotelName: t.exposeString("hotelName"),
     }),
 });
 
@@ -31,6 +40,27 @@ builder.queryType({
             resolve: async (query) => {
                 const prisma = getPrismaClient();
                 return prisma.client.findMany({ ...query });
+            },
+        }),
+        hotels: t.prismaField({
+            type: ["Hotel"],
+            resolve: async (query) => {
+                const prisma = getPrismaClient();
+                return prisma.hotel.findMany({ ...query });
+            },
+        }),
+        hotel: t.prismaField({
+            type: "Hotel",
+            nullable: true,
+            args: {
+                apiKey: t.arg.id({ required: true }),
+            },
+            resolve: async (query, _, { apiKey }) => {
+                const prisma = getPrismaClient();
+                return prisma.hotel.findUnique({
+                    ...query,
+                    where: { apiKey: apiKey.toString() },
+                });
             },
         }),
     }),

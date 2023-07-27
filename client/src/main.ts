@@ -12,6 +12,10 @@ async function main() {
         clients: {
             clientKey: true,
             clientName: true,
+            hotels: {
+                apiKey: true,
+                hotelName: true,
+            },
         },
     });
 
